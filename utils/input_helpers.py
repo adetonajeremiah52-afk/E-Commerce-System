@@ -12,11 +12,11 @@ def get_int_range(prompt, min_value, max_value):
         try:
             value = int(input(prompt))
             if value < min_value or value > max_value:
-                print(f"Please enter a number between {min_value} and {max_value}")
+                print(f"Invalid input. Please enter a number between {min_value} and {max_value}")
                 continue
             return value
         except ValueError:
-            print("Please enter a valid number")
+            print("Invalid input. Please enter a valid number.")
 
 
 def get_float(prompt):
@@ -25,7 +25,7 @@ def get_float(prompt):
             value = float(input(prompt))
             return value
         except ValueError:
-            print("Please enter a valid number")
+            print("Invalid input. Please enter a valid number.")
 
 
 def get_positive_int(prompt):
@@ -33,11 +33,11 @@ def get_positive_int(prompt):
         try:
             value = int(input(prompt))
             if value <= 0:
-                print("Please enter a positive number")
+                print("Invalid input. Please enter a number greater than 0.")
                 continue
             return value
         except ValueError:
-            print("Please enter a valid number")
+            print("Invalid input. Please enter a valid number.")
 
 
 def get_non_negative_float(prompt):
@@ -45,8 +45,8 @@ def get_non_negative_float(prompt):
         try:
             value = float(input(prompt))
             if value < 0:
-                print("Please enter a non-negative number")
+                print("Invalid input. Value cannot be less than 0.")
                 continue
             return value
         except ValueError:
-            print("Please enter a valid number")
+            print("Invalid input. Please enter a valid number.")

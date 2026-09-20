@@ -1,6 +1,6 @@
 from e_commerce.models import Order
 from e_commerce.payments import CardPayment, BankPayment, CashPayment, WalletPayment
-from e_commerce.utils import get_int_range, get_non_negative_float
+from e_commerce.utils import get_int_range, get_non_negative_float, get_positive_int
 
 def choose_payment_method(customer):
     print("\n--- Payment Method ---")
@@ -43,17 +43,11 @@ def cart_menu(customer):
             customer.show_cart()
 
         elif option == 2:
-            try:
-                number = int(input("Enter product number to remove: "))
-                if number <= 0:
-                    print("Product number must be greater than zero")
-                    continue
-                index = number - 1
-                cart_item = customer.cart[index]
-                product_to_remove  = cart_item["product"]
-                customer.remove_from_cart(product_to_remove)
-            except (ValueError, IndexError):
-                print("Please enter a valid product number.")
+            number = get_positive_int("Enter product number to remove: ")
+            index = number - 1
+            cart_item = customer.cart[index]
+            product_to_remove  = cart_item["product"]
+            customer.remove_from_cart(product_to_remove)
 
         elif option == 3:
             total = customer.cart_total()
